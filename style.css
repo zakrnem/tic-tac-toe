@@ -7,7 +7,8 @@
     --active-button: #425b4b;
     --title-font-size: 2rem;
     --body-font-size: 1.1rem;
-    --flex-gap: 0.5rem;
+    --flex-gap: 1rem;
+    --button-padding: 0.5rem 0.8rem;
   }
 @font-face {
     font-family: body-font;
@@ -53,4 +54,14 @@ body {
 .github:hover {
     transform: rotate(720deg);
     transition: transform 1.5s;
+}
+
+button {
+    font-size: inherit;
+    padding: var(--button-padding)
+}
+
+.footer {
+    position: absolute;
+    bottom: 1rem;
 }
