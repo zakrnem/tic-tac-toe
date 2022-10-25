@@ -2,18 +2,23 @@ let ticTacToe = (function () {
     let gameGrid = document.querySelector('.game-grid')    
     gameGrid.addEventListener('click', (e) => markGridDOM(e))
     let gameTurn = 0
+    let gameCount = 0
     
     let markGridDOM  = function (e) {
         let target = document.getElementById(`${e.target.id}`);
         if (gameTurn === 0 && target.textContent === '') {
             target.textContent = 'X'
             gameTurn += 1;
+            gameCount += 1;
+            console.log(gameCount)
             markGridArray(e, 'X')
             gamePlay()
         }
         else if (gameTurn === 1 && target.textContent === '') {
             target.textContent = 'O'
             gameTurn -= 1;
+            gameCount += 1;
+            console.log(gameCount)
             markGridArray(e, 'O')
             gamePlay()
         }
@@ -27,11 +32,13 @@ let ticTacToe = (function () {
     let result = document.querySelector('.result')
     let gamePlay = function () {
         console.log(gameGridArray)
+        
 
         let resultMessage = function () {
             gameTurn === 1 ? result.textContent = 'Player #1 won!'
             : result.textContent = 'Player #2 won!'
         }
+
 
         switch(true) {
             case (gameGridArray[0] === gameGridArray[1]
@@ -74,6 +81,8 @@ let ticTacToe = (function () {
                 && gameGridArray[2] !== undefined):
                 resultMessage();
                 break;
+            case (gameCount === 9 && result.textContent === ''):
+                result.textContent = `It's a tie`;
         }
     }
     
