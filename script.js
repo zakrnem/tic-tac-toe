@@ -27,12 +27,52 @@ let ticTacToe = (function () {
     let result = document.querySelector('.result')
     let gamePlay = function () {
         console.log(gameGridArray)
-              
+
+        let resultMessage = function () {
+            gameTurn === 1 ? result.textContent = 'Player #1 won!'
+            : result.textContent = 'Player #2 won!'
+        }
+
         switch(true) {
             case (gameGridArray[0] === gameGridArray[1]
                 && gameGridArray[0] === gameGridArray [2]
                 && gameGridArray[0] !== undefined):
-                result.textContent = 'Someone won!'
+                resultMessage();
+                break;
+            case (gameGridArray[3] === gameGridArray[4]
+                && gameGridArray[3] === gameGridArray [5]
+                && gameGridArray[3] !== undefined):
+                resultMessage();
+                break;
+            case (gameGridArray[6] === gameGridArray[7]
+                && gameGridArray[6] === gameGridArray [8]
+                && gameGridArray[6] !== undefined):
+                resultMessage();
+                break;
+            case (gameGridArray[0] === gameGridArray[3]
+                && gameGridArray[0] === gameGridArray [6]
+                && gameGridArray[0] !== undefined):
+                resultMessage();
+                break;
+            case (gameGridArray[1] === gameGridArray[4]
+                && gameGridArray[1] === gameGridArray [7]
+                && gameGridArray[1] !== undefined):
+                resultMessage();
+                break;
+            case (gameGridArray[2] === gameGridArray[5]
+                && gameGridArray[2] === gameGridArray [8]
+                && gameGridArray[2] !== undefined):
+                resultMessage();
+                break;
+            case (gameGridArray[0] === gameGridArray[4]
+                && gameGridArray[0] === gameGridArray [8]
+                && gameGridArray[0] !== undefined):
+                resultMessage();
+                break;
+            case (gameGridArray[2] === gameGridArray[4]
+                && gameGridArray[2] === gameGridArray [6]
+                && gameGridArray[2] !== undefined):
+                resultMessage();
                 break;
         }
     }
