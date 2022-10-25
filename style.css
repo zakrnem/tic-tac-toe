@@ -49,6 +49,12 @@ body {
     font-size: 5rem;
 }
 
+.result {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+}
+
 .github {
     font-size: 1.5rem;
     height: 2rem;
