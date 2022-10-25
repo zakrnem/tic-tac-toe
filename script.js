@@ -4,13 +4,12 @@ let ticTacToe = (function () {
     let gameTurn = 0
     let gameCount = 0
     
-    let markGridDOM  = function (e) {
+    function markGridDOM(e) {
         let target = document.getElementById(`${e.target.id}`);
         if (gameTurn === 0 && target.textContent === '') {
             target.textContent = 'X'
             gameTurn += 1;
             gameCount += 1;
-            console.log(gameCount)
             markGridArray(e, 'X')
             gamePlay()
         }
@@ -18,28 +17,18 @@ let ticTacToe = (function () {
             target.textContent = 'O'
             gameTurn -= 1;
             gameCount += 1;
-            console.log(gameCount)
             markGridArray(e, 'O')
             gamePlay()
         }
     }
 
     let gameGridArray = Array.from({length: 9})
-    let markGridArray = function (e, mark) {
+    function markGridArray (e, mark) {
         gameGridArray[e.target.id] = mark;
     }
 
     let result = document.querySelector('.result')
-    let gamePlay = function () {
-        console.log(gameGridArray)
-        
-
-        let resultMessage = function () {
-            gameTurn === 1 ? result.textContent = 'Player #1 won!'
-            : result.textContent = 'Player #2 won!'
-        }
-
-
+    function gamePlay() {
         switch(true) {
             case (gameGridArray[0] === gameGridArray[1]
                 && gameGridArray[0] === gameGridArray [2]
@@ -84,27 +73,25 @@ let ticTacToe = (function () {
             case (gameCount === 9 && result.textContent === ''):
                 result.textContent = `It's a tie`;
         }
+        function resultMessage() {
+            gameTurn === 1 ? result.textContent = 'Player #1 won!'
+            : result.textContent = 'Player #2 won!'
+            gameTurn = undefined
+        }
     }
     
     let resetButton = document.querySelector('#reset')
     resetButton.addEventListener('click', () => resetGame())
     
-    let resetGame = function () {
+    function resetGame() {
         gameTurn = 0
+        gameCount = 0
         result.textContent = ''
         let gridArray = gameGrid.getElementsByTagName('div')
         for (let i = gridArray.length-1; i>=0; i--) {
             gridArray[i].textContent = ''
             gameGridArray[i] = undefined
         }
-        console.log(gameGridArray)
+        console.log(gameTurn)
     }
 })()
-
-
-
-    
-
-
-
-
