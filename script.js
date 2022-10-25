@@ -1,10 +1,14 @@
 let ticTacToe = (function () {
+    //Grid event listener
     let gameGrid = document.querySelector('.game-grid')    
-    gameGrid.addEventListener('click', (e) => markGridDOM(e))
+    gameGrid.addEventListener('click', (e) => markGrid(e))
+
+    //Game global variables
     let gameTurn = 0
     let gameCount = 0
     
-    function markGridDOM(e) {
+    //Mark DOM & Array
+    function markGrid(e) {
         let target = document.getElementById(`${e.target.id}`);
         if (gameTurn === 0 && target.textContent === '') {
             target.textContent = 'X'
@@ -22,11 +26,13 @@ let ticTacToe = (function () {
         }
     }
 
+    //Game array
     let gameGridArray = Array.from({length: 9})
     function markGridArray (e, mark) {
         gameGridArray[e.target.id] = mark;
     }
 
+    //Result rules
     let result = document.querySelector('.result')
     function gamePlay() {
         switch(true) {
@@ -80,6 +86,7 @@ let ticTacToe = (function () {
         }
     }
     
+    //Reset game
     let resetButton = document.querySelector('#reset')
     resetButton.addEventListener('click', () => resetGame())
     

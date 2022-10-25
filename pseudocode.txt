@@ -1,27 +1,40 @@
-1. Create event listener for grid click.
-2. Insert "X" or "O" depending on the turn.
-    2.1. Create a variable with 2 possible values (binary numbers?).
-    2.2. The binary variable will determine if the output is "X" or "O".
+A. Computer algorith:
+    A.1. Get a random number between 1-9 (pcRandomPosition).
+    A.2. Try to mark the grid in gameGridArray[pcRandomPosition-1].
+        A.2.1. If that item isn't empty return to A.1.
+        A.2.2. If the item is empty let the user play.
 
+B. Code pattern:
+    gameGrid: function() {
+        let gameGrid = document.querySelector
+        gameGrid.addEventListener(markGrid)
+    },
+    gameTurn: 0,
+    gameCount: 0,
+    markGrid: function (e) {
 
-Tic Tac Toe Rules
-1. You can only add markers to empty grid items.
-    1.1. If target doesn't contains marker then add marker.
-    1.2. Else don't do anything.
-2. The first player with 3 inline markers wins the game.
-    2.1. To establish the rules we need to determine the gameboard layout.
-    2.2. The gameboard will be an array with a length of 9.
-    2.3. Inline marker rules:
-        2.3.1. If array[0] === array[1] && array[0] == array[2] someone wins.
-        2.3.2. If array[3] === array[4] && array[3] == array[5] someone wins.
-        2.3.3. If array[6] === array[7] && array[3] == array[8] someone wins.
-        2.3.4. If array[0] === array[3] && array[0] == array[6] someone wins.
-        2.3.5. If array[1] === array[4] && array[1] == array[7] someone wins.
-        2.3.6. If array[2] === array[5] && array[2] == array[8] someone wins.
-        2.3.7. If array[0] === array[4] && array[0] == array[8] someone wins.
-        2.3.8. If array[2] === array[4] && array[2] == array[6] someone wins.
-    2.4 Inside each of these conditionals there should be another conditional to determine the winner:
-        2.4.1. Let array['first character in rule'] = winner
-        2.4.2. If winner === O then console.log('Computer wins').
-        2.4.3. If winner === X then console.log('User wins').
+    },
+    gameGridArray: Array.from({length:9}),
+    markGridArray: function () {
+
+    },
+    result: document.querySelector,
+    gamePlay: function() {
+        switch() {
+            case():
+            resultMessage()
+        }
+        function resultMessage() {
+
+        }
+    },
+    resetButton: document.querySelector,
+    resetGame: function() {
+        this.gameTurn = 0
+        this.gameCount = 0
+        this.result.textContent = ''
+        for () {
+            
+        }
+    }
 
