@@ -1,38 +1,42 @@
-let ticTacToe = (function () {
-    //Grid event listener
-    let gameGrid = document.querySelector('.game-grid')    
-    gameGrid.addEventListener('click', (e) => markGrid(e))
-
+let ticTacToe = {
     //Game global variables
-    let gameTurn = 0
-    let gameCount = 0
+    gameCount: 0,
+    gameTurn: 0,
+    
+    //Grid event listener
+    gridListener: (function () {
+        let gameGrid = document.querySelector('.game-grid')
+        gameGrid.addEventListener('click', (e) => ticTacToe.markGrid(e))
+    })(),
     
     //Mark DOM & Array
-    function markGrid(e) {
+    markGrid: function (e) {
         let target = document.getElementById(`${e.target.id}`);
-        if (gameTurn === 0 && target.textContent === '') {
+        if (this.gameTurn === 0 && target.textContent === '') {
             target.textContent = 'X'
-            gameTurn += 1;
-            gameCount += 1;
-            markGridArray(e, 'X')
-            gamePlay()
+            this.gameTurn += 1;
+            this.gameCount += 1;
+            this.markGridArray(e, 'X')
+            //gamePlay()
         }
-        else if (gameTurn === 1 && target.textContent === '') {
+        else if (this.gameTurn === 1 && target.textContent === '') {
             target.textContent = 'O'
-            gameTurn -= 1;
-            gameCount += 1;
-            markGridArray(e, 'O')
-            gamePlay()
+            this.gameTurn -= 1;
+            this.gameCount += 1;
+            this.markGridArray(e, 'O')
+            //gamePlay()
         }
-    }
+    },
 
     //Game array
-    let gameGridArray = Array.from({length: 9})
-    function markGridArray (e, mark) {
-        gameGridArray[e.target.id] = mark;
+    gameGridArray: Array.from({length: 9}),
+
+    markGridArray: function (e, mark) {
+        this.gameGridArray[e.target.id] = mark;
+        console.log(this.gameGridArray)
     }
 
-    //Result rules
+/*     //Result rules
     let result = document.querySelector('.result')
     function gamePlay() {
         switch(true) {
@@ -100,5 +104,5 @@ let ticTacToe = (function () {
             gameGridArray[i] = undefined
         }
         console.log(gameTurn)
-    }
-})()
+    } */
+}
