@@ -30,6 +30,7 @@
                 this.markGridArray(userChoice, mark)
                 //this.gamePlay()
             }
+            //this.computerPlayer() Rules not working
         },
 
          //Game array

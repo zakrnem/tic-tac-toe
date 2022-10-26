@@ -1,11 +1,5 @@
-A. Computer algorith:
-    A.1. Get a random number between 1-9 (pcRandomPosition).
-    A.2. Try to mark the grid in gameGridArray[pcRandomPosition-1].
-        A.2.1. If that item isn't empty return to A.1.
-        A.2.2. If the item is empty let the user play.
+Pending:
 
-
-Two options for letting computer mark the DOM:
-1. Unite the markGrid() & markGridArray() functions, so the result is archieved in only one function.
-
-2. Add a node selector to the computerPlayer function to let it mark the DOM
+* Add game modes to JS.
+User vs Computer:
+1. The gameGrid eventListener should call the computerPlayer function.
