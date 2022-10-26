@@ -1,39 +1,46 @@
 (function () {
-        let ticTacToe = {
+    let ticTacToe = {
         //Game global variables
         gameCount: 0,
         gameTurn: 0,
-        
+
         //Grid event listener
-        gridListener: document.querySelector('.game-grid').addEventListener('click', (e) => ticTacToe.markGrid(e)),
+        gridListener: document.querySelector('.game-grid')
+        .addEventListener('click', (e) => ticTacToe.markGrid(e)),
 
         
         //Mark DOM & Array
         markGrid: function (e) {
             let target = document.getElementById(`${e.target.id}`);
+            let userChoice = e.target.id
+            //let mark
+            //let choice
+            
             if (this.gameTurn === 0 && target.textContent === '') {
-                target.textContent = 'X'
+                mark = 'X'
                 this.gameTurn += 1;
                 this.gameCount += 1;
-                this.markGridArray(e, 'X')
-                this.gamePlay()
+                this.markGridArray(userChoice, mark)
+                //this.gamePlay()
             }
             else if (this.gameTurn === 1 && target.textContent === '') {
-                target.textContent = 'O'
+                mark = 'O'
                 this.gameTurn -= 1;
                 this.gameCount += 1;
-                this.markGridArray(e, 'O')
-                this.gamePlay()
+                this.markGridArray(userChoice, mark)
+                //this.gamePlay()
             }
         },
 
-        //Game array
-        gameGridArray: Array.from({length: 9}),
-        markGridArray: function (e, mark) {
-            this.gameGridArray[e.target.id] = mark;
-            console.log(this.gameGridArray)
-        },
+         //Game array
+         gameGridArray: Array.from({length: 9}),
 
+         markGridArray: function (choice, mark) {
+            document.getElementById(choice).textContent = mark
+            this.gameGridArray[choice] = mark;
+            console.log(this.gameGridArray)
+         },
+        
         //Result rules
         gamePlay: function() {
             switch(true) {
@@ -89,7 +96,7 @@
             : ticTacToe.result.textContent = 'Player #2 won!'
             this.gameTurn = undefined
         },
-        
+
         //Reset game
         gameGrid: document.querySelector('.game-grid'),
         resetListener: (function() {
@@ -104,6 +111,21 @@
             for (let i = gridArray.length-1; i>=0; i--) {
                 gridArray[i].textContent = ''
                 this.gameGridArray[i] = undefined
+            }
+        },
+
+        //Computer player
+        computerModeListener: document.getElementById('computer')
+        .addEventListener('click', () => ticTacToe.computerPlayer()),
+
+        computerPlayer: function () {
+            const computerChoice = Math.round(Math.random()*9)
+            if (document.getElementById(computerChoice).textContent === '') {
+                this.markGridArray(computerChoice, 'O')
+                this.gameTurn = 0
+            }
+            else {
+                this.computerPlayer()
             }
         }
     }
