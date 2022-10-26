@@ -3,38 +3,3 @@ A. Computer algorith:
     A.2. Try to mark the grid in gameGridArray[pcRandomPosition-1].
         A.2.1. If that item isn't empty return to A.1.
         A.2.2. If the item is empty let the user play.
-
-B. Code pattern:
-    gameGrid: function() {
-        let gameGrid = document.querySelector
-        gameGrid.addEventListener(markGrid)
-    },
-    gameTurn: 0,
-    gameCount: 0,
-    markGrid: function (e) {
-
-    },
-    gameGridArray: Array.from({length:9}),
-    markGridArray: function () {
-
-    },
-    result: document.querySelector,
-    gamePlay: function() {
-        switch() {
-            case():
-            resultMessage()
-        }
-        function resultMessage() {
-
-        }
-    },
-    resetButton: document.querySelector,
-    resetGame: function() {
-        this.gameTurn = 0
-        this.gameCount = 0
-        this.result.textContent = ''
-        for () {
-            
-        }
-    }
-
