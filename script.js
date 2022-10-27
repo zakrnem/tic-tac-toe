@@ -13,24 +13,22 @@
         markGrid: function (e) {
             let target = document.getElementById(`${e.target.id}`);
             let userChoice = e.target.id
-            //let mark
-            //let choice
-            
+                    
             if (this.gameTurn === 0 && target.textContent === '') {
                 mark = 'X'
                 this.gameTurn += 1;
-                this.gameCount += 1;
+                //this.gameCount += 1;
                 this.markGridArray(userChoice, mark)
-                //this.gamePlay()
+                this.gamePlay()
+                setTimeout(this.computerPlayer,300)
             }
             else if (this.gameTurn === 1 && target.textContent === '') {
                 mark = 'O'
                 this.gameTurn -= 1;
-                this.gameCount += 1;
+                //this.gameCount += 1;
                 this.markGridArray(userChoice, mark)
-                //this.gamePlay()
+                this.gamePlay()
             }
-            //this.computerPlayer() Rules not working
         },
 
          //Game array
@@ -39,7 +37,8 @@
          markGridArray: function (choice, mark) {
             document.getElementById(choice).textContent = mark
             this.gameGridArray[choice] = mark;
-            console.log(this.gameGridArray)
+            this.gameCount += 1;
+            //console.log(this.gameGridArray)
          },
         
         //Result rules
@@ -105,6 +104,7 @@
             resetButton.addEventListener('click', () => ticTacToe.resetGame())
         })(),    
         resetGame: function() {
+            console.clear()
             this.gameTurn = 0
             this.gameCount = 0
             this.result.textContent = ''
@@ -119,14 +119,20 @@
         computerModeListener: document.getElementById('computer')
         .addEventListener('click', () => ticTacToe.computerPlayer()),
 
+        computerChoice: function() {
+                return Math.round(Math.random()*8)
+        },
+        
         computerPlayer: function () {
-            const computerChoice = Math.round(Math.random()*9)
+            const computerChoice = ticTacToe.computerChoice()
+            console.log('Count: ' + ticTacToe.gameCount)
+            console.log('Computer choice: ' + computerChoice)
             if (document.getElementById(computerChoice).textContent === '') {
-                this.markGridArray(computerChoice, 'O')
-                this.gameTurn = 0
+                ticTacToe.markGridArray(computerChoice, 'O')
+                ticTacToe.gameTurn = 0
             }
-            else {
-                this.computerPlayer()
+            else if (ticTacToe.gameCount < 9) {
+                ticTacToe.computerPlayer()
             }
         }
     }
