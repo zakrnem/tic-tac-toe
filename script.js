@@ -16,18 +16,14 @@
                     
             if (this.gameTurn === 0 && target.textContent === '') {
                 mark = 'X'
-                this.gameTurn += 1;
-                //this.gameCount += 1;
+                this.gameTurn = 1;
                 this.markGridArray(userChoice, mark)
-                this.gamePlay()
                 setTimeout(this.computerPlayer,300)
             }
             else if (this.gameTurn === 1 && target.textContent === '') {
                 mark = 'O'
-                this.gameTurn -= 1;
-                //this.gameCount += 1;
+                this.gameTurn = 0;
                 this.markGridArray(userChoice, mark)
-                this.gamePlay()
             }
         },
 
@@ -38,7 +34,7 @@
             document.getElementById(choice).textContent = mark
             this.gameGridArray[choice] = mark;
             this.gameCount += 1;
-            //console.log(this.gameGridArray)
+            this.gamePlay()
          },
         
         //Result rules
@@ -118,20 +114,15 @@
         //Computer player
         computerModeListener: document.getElementById('computer')
         .addEventListener('click', () => ticTacToe.computerPlayer()),
-
-        computerChoice: function() {
-                return Math.round(Math.random()*8)
-        },
         
         computerPlayer: function () {
-            const computerChoice = ticTacToe.computerChoice()
-            console.log('Count: ' + ticTacToe.gameCount)
-            console.log('Computer choice: ' + computerChoice)
-            if (document.getElementById(computerChoice).textContent === '') {
-                ticTacToe.markGridArray(computerChoice, 'O')
+            const computerChoice = Math.round(Math.random()*8)
+            if (document.getElementById(computerChoice).textContent === ''
+            && ticTacToe.gameTurn !== undefined) {
                 ticTacToe.gameTurn = 0
+                ticTacToe.markGridArray(computerChoice, 'O')
             }
-            else if (ticTacToe.gameCount < 9) {
+            else if (ticTacToe.gameCount < 9 && ticTacToe.gameTurn !== undefined) {
                 ticTacToe.computerPlayer()
             }
         }
