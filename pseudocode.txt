@@ -1,5 +1,9 @@
 Pending:
 
-* Add game modes to JS.
-User vs Computer:
-1. The gameGrid eventListener should call the computerPlayer function.
+* Switch between multiplayer mode & user vs computer.
+    + Create gameMode variable (initial value 0).
+    + addEventListener to the multiplayer button.
+        + If gameMode = 0 the computerPlayer function 
+        won't be executed.
+        + If gameMode = 1 the script will continue
+        working as it's now (commit #19).

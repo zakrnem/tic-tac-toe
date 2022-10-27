@@ -2,7 +2,8 @@
     let ticTacToe = {
         //Game global variables
         gameCount: 0,
-        gameTurn: 0,
+        gameTurn: 0 /*0 for player 1, 1 for player 2*/,
+        gameMode: 0 /*computer by default*/,
 
         //Grid event listener
         gridListener: document.querySelector('.game-grid')
@@ -111,18 +112,30 @@
             }
         },
 
+        //Multiplayer mode
+        multiplayerMode: document.getElementById('multiplayer')
+        .addEventListener('click', () => {
+            this.gameMode = 1
+            console.log(this.gameMode)
+        }),
+
         //Computer player
-        computerModeListener: document.getElementById('computer')
-        .addEventListener('click', () => ticTacToe.computerPlayer()),
+        computerMode: document.getElementById('computer')
+        .addEventListener('click', () => {
+            this.gameMode = 0
+            console.log(this.gameMode)
+        }),
         
         computerPlayer: function () {
             const computerChoice = Math.round(Math.random()*8)
             if (document.getElementById(computerChoice).textContent === ''
-            && ticTacToe.gameTurn !== undefined) {
+            && ticTacToe.gameTurn !== undefined && ticTacToe.gameMode === 0) {
+                console.log(ticTacToe.gameMode)
                 ticTacToe.gameTurn = 0
                 ticTacToe.markGridArray(computerChoice, 'O')
             }
-            else if (ticTacToe.gameCount < 9 && ticTacToe.gameTurn !== undefined) {
+            else if (ticTacToe.gameCount < 9 && ticTacToe.gameTurn !== undefined
+                && ticTacToe.gameMode === 0) {
                 ticTacToe.computerPlayer()
             }
         }
