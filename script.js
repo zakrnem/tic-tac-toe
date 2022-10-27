@@ -2,8 +2,14 @@
     let ticTacToe = {
         //Game global variables
         gameCount: 0,
-        gameTurn: 0 /*0 for player 1, 1 for player 2*/,
-        gameMode: 0 /*computer by default*/,
+        gameTurn: 0,
+        //player1 turn = 0
+        //player2 turn = 1
+
+        
+        gameMode: 0,
+        //computer mode = 0
+        //multiplayer mode = 1
 
         //Grid event listener
         gridListener: document.querySelector('.game-grid')
@@ -112,25 +118,24 @@
             }
         },
 
-        //Multiplayer mode
+        //Multiplayer mode listener
         multiplayerMode: document.getElementById('multiplayer')
         .addEventListener('click', () => {
-            this.gameMode = 1
-            console.log(this.gameMode)
+            ticTacToe.gameMode = 1
         }),
 
-        //Computer player
+        //Computer vs player mode listener
         computerMode: document.getElementById('computer')
         .addEventListener('click', () => {
-            this.gameMode = 0
-            console.log(this.gameMode)
+            ticTacToe.gameMode = 0
         }),
         
         computerPlayer: function () {
             const computerChoice = Math.round(Math.random()*8)
+            //const gameMode = ticTacToe.gameMode
+            //console.log(gameMode)
             if (document.getElementById(computerChoice).textContent === ''
             && ticTacToe.gameTurn !== undefined && ticTacToe.gameMode === 0) {
-                console.log(ticTacToe.gameMode)
                 ticTacToe.gameTurn = 0
                 ticTacToe.markGridArray(computerChoice, 'O')
             }
