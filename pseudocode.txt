@@ -1,9 +1,9 @@
 Pending:
 
-* Switch between multiplayer mode & user vs computer.
-    + Create gameMode variable (initial value 0).
-    + addEventListener to the multiplayer button.
-        + If gameMode = 0 the computerPlayer function 
-        won't be executed.
-        + If gameMode = 1 the script will continue
-        working as it's now (commit #19).
+* Get players name.
+* Improve styling:
+    * Make corresponding gameMode button darker.
+    * Style buttons.
+    * Add box shadow.
+    * Add a color.
+    * Link to other games (rock, paper & scissors).
